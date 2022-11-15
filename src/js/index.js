@@ -8,10 +8,11 @@
     let swRegistration;
     let usingSW = ("seviceWorker" in navigator)
 
-    
+    if (usingSW) {
+       initServiceWorker().catch(console.error);
+    }
 
     document.addEventListener("DOMContentLoaded", ready, false)
-
 
     function ready() {
         offlineIcon = document.getElementById("Connectivity-status")
@@ -27,7 +28,6 @@
             isOnline = false
             offlineIcon.textContent = 'offline'
         })
-
     }
 
     async function initServiceWorker() {
@@ -47,8 +47,6 @@
             sw = navigator.serviceWorker.controller
             
         })
-
-        initServiceWorker().catch(console.error);
             
     }
 
